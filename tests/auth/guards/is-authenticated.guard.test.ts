@@ -33,6 +33,20 @@ describe('is-authenticated.guard', () => {
 
     expect(lastPath).toBe(to.path);
   });
+
+  test('should block if not authenticated with spy', async () => {
+    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem');
+    await isAuthenticatedGuard(to, to, next);
+
+    expect(setItemSpy).toHaveBeenCalledWith('lastPath', to.path);
+  });
+
+  test('should pass if authenticated', async () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('123456');
+    await isAuthenticatedGuard(to, to, next);
+
+    expect(next).toHaveBeenCalledWith();
+  });
 });
 
 //npm run test:unit
