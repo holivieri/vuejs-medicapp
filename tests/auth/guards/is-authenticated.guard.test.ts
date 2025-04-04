@@ -34,3 +34,5 @@ describe('is-authenticated.guard', () => {
     expect(lastPath).toBe(to.path);
   });
 });
+
+//npm run test:unit
