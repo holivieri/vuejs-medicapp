@@ -1,7 +1,7 @@
 <template>
   <button :class="['btn btn-circle fixed', props.position]">
-    <slot></slot>
-    <!-- <svg
+    <!-- <slot></slot> -->
+    <svg
       viewBox="0 -195.5 512 512"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@
           ></path>
         </g>
       </g>
-    </svg> -->
+    </svg>
   </button>
 </template>
 

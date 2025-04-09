@@ -5,39 +5,31 @@
       <thead>
         <tr>
           <th></th>
-          <th>Name</th>
-          <th>Job</th>
-          <th>Favorite Color</th>
+          <th>Project</th>
+          <th>Tasks</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
         <!-- row 1 -->
-        <tr>
-          <th>1</th>
-          <td>Cy Ganderton</td>
-          <td>Quality Control Specialist</td>
-          <td>Blue</td>
-        </tr>
-        <!-- row 2 -->
-        <tr class="hover:bg-base-300">
-          <th>2</th>
-          <td>Hart Hagerty</td>
-          <td>Desktop Support Technician</td>
-          <td>Purple</td>
-        </tr>
-        <!-- row 3 -->
-        <tr>
-          <th>3</th>
-          <td>Brice Swyre</td>
-          <td>Tax Accountant</td>
-          <td>Red</td>
+        <tr v-for="(project, index) in projectStore.projects" :key="project.id" class="hover">
+          <th>{{ index + 1 }}</th>
+          <td>{{ project.name }}</td>
+          <td>{{ project.tasks?.length }}</td>
+          <td><progress class="progress progress-accent w-56" value="10" max="100"></progress></td>
         </tr>
       </tbody>
     </table>
     <FabButton position="bottom-right" />
   </div>
+
+  <!-- <InputModal :open="true" /> -->
 </template>
 
 <script lang="ts" setup>
 import FabButton from '@/modules/common/components/FabButton.vue';
+import { useProjectStore } from '../store/projects.store';
+// import InputModal from '@/modules/common/components/InputModal.vue';
+
+const projectStore = useProjectStore();
 </script>
